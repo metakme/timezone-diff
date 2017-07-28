@@ -3,30 +3,35 @@ package com.app.timezonediff;
 
 public class TimezoneDiff {
     
-    private final String refTimeZone;
-    private final String targetTimeZone;
-    private int difference;
+    private final Timezone refTimeZone;
+    private final Timezone targetTimeZone;
+    private final int difference;
+    private final String description;
 
     /**
      * @param refTimeZone
      * @param targetTimeZone
+     * @param difference
+     * @param description
      */
-    public TimezoneDiff(String refTimeZone, String targetTimeZone) {
+    public TimezoneDiff(Timezone refTimeZone, Timezone targetTimeZone, int difference, String description) {
         this.refTimeZone = refTimeZone;
         this.targetTimeZone = targetTimeZone;
+        this.difference = difference;
+        this.description = description;
     }
 
     /**
      * @return the refTimeZone
      */
-    public String getRefTimeZone() {
+    public Timezone getRefTimeZone() {
         return refTimeZone;
     }
 
     /**
      * @return the targetTimeZone
      */
-    public String getTargetTimeZone() {
+    public Timezone getTargetTimeZone() {
         return targetTimeZone;
     }
 
@@ -35,5 +40,12 @@ public class TimezoneDiff {
      */
     public int getDifference() {
         return difference;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
     }
 }
