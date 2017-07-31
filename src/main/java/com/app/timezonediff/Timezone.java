@@ -1,16 +1,15 @@
 package com.app.timezonediff;
 
 public class Timezone {
-    
+
     private String name;
     private int utcOffset;
-    
+
     /**
      * Empty Constructor initializes to UTC 0
      */
     public Timezone() {
-        this.name = "UTC";
-        this.utcOffset = 0;
+        this("UTC", 0);
     }
 
 
@@ -19,8 +18,7 @@ public class Timezone {
      * @param name
      */
     public Timezone(String name) {
-        this.name = name;
-        this.utcOffset = 0;
+        this(name, 0);
     }
 
     /**

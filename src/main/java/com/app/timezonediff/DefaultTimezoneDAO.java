@@ -8,7 +8,7 @@ import java.util.Map;
 public class DefaultTimezoneDAO implements TimezoneDAO {
 
     private final Map <String, Timezone> timezones;
-    
+
     /**
      *
      */
@@ -54,11 +54,11 @@ public class DefaultTimezoneDAO implements TimezoneDAO {
     }
 
     private static TimezoneDAO timezoneDAO = null;
-    
+
     public static TimezoneDAO getTimeZoneDAO(){
-        if(timezoneDAO == null) 
+        if(timezoneDAO == null)
             timezoneDAO = new DefaultTimezoneDAO();
-        
+
         return timezoneDAO;
     }
 

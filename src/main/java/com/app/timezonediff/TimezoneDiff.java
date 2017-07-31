@@ -8,13 +8,19 @@ public class TimezoneDiff {
     private final int difference;
     private final String description;
 
+
     /**
      * @param refTimeZone
      * @param targetTimeZone
-     * @param difference
-     * @param description
      */
-    public TimezoneDiff(Timezone refTimeZone, Timezone targetTimeZone, int difference, String description) {
+    public TimezoneDiff(Timezone refTimeZone, Timezone targetTimeZone) {
+        TimezoneDiff(refTimeZone,
+                     targetTimeZone,
+                     difference,
+                     description);
+    }
+
+    private TimezoneDiff(Timezone refTimeZone, Timezone targetTimeZone, int difference, String description) {
         this.refTimeZone = refTimeZone;
         this.targetTimeZone = targetTimeZone;
         this.difference = difference;
