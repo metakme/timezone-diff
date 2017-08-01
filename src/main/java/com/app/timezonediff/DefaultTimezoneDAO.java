@@ -16,8 +16,8 @@ public class DefaultTimezoneDAO implements TimezoneDAO {
         this.timezones = new HashMap<String,Timezone>();
         timezones.put("UTC", new Timezone("UTC", 0));
         timezones.put("GMT", new Timezone("GMT", 0));
-        timezones.put("EST", new Timezone("EST", 0));
-        timezones.put("PST", new Timezone("PST", 0));
+        timezones.put("EST", new Timezone("EST", -4));
+        timezones.put("PST", new Timezone("PST", -7));
     }
 
     @Override

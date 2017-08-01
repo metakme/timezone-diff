@@ -5,8 +5,10 @@ public class TimezoneDiff {
     
     private final Timezone refTimeZone;
     private final Timezone targetTimeZone;
-    private final int difference;
-    private final String description;
+    private final int refMod;
+    private final int targetMod;
+    private int difference;
+    private String description;
 
 
     /**
@@ -14,17 +16,16 @@ public class TimezoneDiff {
      * @param targetTimeZone
      */
     public TimezoneDiff(Timezone refTimeZone, Timezone targetTimeZone) {
-        TimezoneDiff(refTimeZone,
-                     targetTimeZone,
-                     difference,
-                     description);
+        this(refTimeZone, targetTimeZone, 0, 0);
     }
 
-    private TimezoneDiff(Timezone refTimeZone, Timezone targetTimeZone, int difference, String description) {
+    public TimezoneDiff(Timezone refTimeZone, Timezone targetTimeZone, int refMod, int targetMod) {
         this.refTimeZone = refTimeZone;
         this.targetTimeZone = targetTimeZone;
-        this.difference = difference;
-        this.description = description;
+        this.refMod = refMod;
+        this.targetMod = targetMod;
+        this.difference = targetTimeZone.getUtcOffset() + this.targetMod - refTimeZone.getUtcOffset() -  this.refMod;
+        this.description = targetTimeZone.getName() + " is " + difference + " hours compared to " + refTimeZone.getName();
     }
 
     /**
