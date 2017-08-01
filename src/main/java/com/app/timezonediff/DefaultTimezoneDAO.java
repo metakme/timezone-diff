@@ -5,13 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DefaultTimezoneDAO implements TimezoneDAO {
+public class DefaultTimezoneDAO extends TimezoneDAO {
 
     private final Map <String, Timezone> timezones;
 
-    /**
-     *
-     */
     private DefaultTimezoneDAO() {
         this.timezones = new HashMap<String,Timezone>();
         timezones.put("UTC", new Timezone("UTC", 0));
@@ -52,14 +49,4 @@ public class DefaultTimezoneDAO implements TimezoneDAO {
     public boolean deleteTimezone(Timezone timezone) {
         return this.timezones.remove(timezone.getName(), timezone);
     }
-
-    private static TimezoneDAO timezoneDAO = null;
-
-    public static TimezoneDAO getTimeZoneDAO(){
-        if(timezoneDAO == null)
-            timezoneDAO = new DefaultTimezoneDAO();
-
-        return timezoneDAO;
-    }
-
 }

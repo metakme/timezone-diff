@@ -1,5 +1,6 @@
 package com.app.timezonediff;
 
+//Possible Improvements - use JPA
 public class Timezone {
 
     private String name;

@@ -15,10 +15,10 @@ public class TimezoneDiffController {
             @RequestParam(value = "ref-mod", required = false, defaultValue = "0") final Integer refModifier,
             @RequestParam(value = "target-mod", required = false, defaultValue = "0") final Integer targetModifier
             ) {
-        Timezone refTimezone = DefaultTimezoneDAO.getTimeZoneDAO().findByName(ref);
+        Timezone refTimezone = DAOController.getTimeZoneDAO().findByName(ref);
         //if (refTimezone == null) throw new TimezoneNotFoundException(ref);
-        
-        Timezone targetTimezone = DefaultTimezoneDAO.getTimeZoneDAO().findByName(target);
+
+        Timezone targetTimezone = DAOController.getTimeZoneDAO().findByName(target);
         //if (targetTimezone == null) throw new TimezoneNotFoundException(target);
 
         return new TimezoneDiff ( refTimezone, targetTimezone, refModifier, targetModifier );

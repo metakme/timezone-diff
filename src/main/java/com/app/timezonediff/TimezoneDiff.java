@@ -1,14 +1,16 @@
 package com.app.timezonediff;
 
+import java.lang.Math;
+import java.lang.StringBuilder;
 
 public class TimezoneDiff {
-    
+
     private final Timezone refTimeZone;
     private final Timezone targetTimeZone;
     private final int refMod;
     private final int targetMod;
-    private int difference;
-    private String description;
+    private final int difference;
+    private final String description;
 
 
     /**
@@ -25,7 +27,14 @@ public class TimezoneDiff {
         this.refMod = refMod;
         this.targetMod = targetMod;
         this.difference = targetTimeZone.getUtcOffset() + this.targetMod - refTimeZone.getUtcOffset() -  this.refMod;
-        this.description = targetTimeZone.getName() + " is " + difference + " hours compared to " + refTimeZone.getName();
+        this.description = new StringBuilder()
+            .append(formatName(targetTimeZone.getName(), this.targetMod))
+            .append(" is ")
+            .append(Math.abs(difference))
+            .append(" hours ")
+            .append(difference > 0 ? "ahead of" : "behind")
+            .append(formatName(refTimeZone.getName(), this.refMod))
+            .toString();
     }
 
     /**
@@ -54,5 +63,11 @@ public class TimezoneDiff {
      */
     public String getDescription() {
         return description;
+    }
+
+    private String formatName(String name, int mod){
+        if (mod == 0) return name;
+        if (mod < 0) return name + mod;
+        return name + "+" + mod;
     }
 }
