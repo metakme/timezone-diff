@@ -9,7 +9,7 @@ public class DefaultTimezoneDAO extends TimezoneDAO {
 
     private final Map <String, Timezone> timezones;
 
-    private DefaultTimezoneDAO() {
+    public DefaultTimezoneDAO() {
         this.timezones = new HashMap<String,Timezone>();
         timezones.put("UTC", new Timezone("UTC", 0));
         timezones.put("GMT", new Timezone("GMT", 0));

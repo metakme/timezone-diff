@@ -15,18 +15,18 @@ import org.springframework.http.HttpStatus;
 @RestController
 @RequestMapping("/timezones")
 public class TimezoneController {
-    @RequestMapping("/", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Timezone> getAllTimezones() {
         return DAOController.getTimeZoneDAO().findAll();
     }
 
-    @RequestMapping("/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
     public Timezone getTimezone(@PathVariable String name) {
         return DAOController.getTimeZoneDAO().findByName(name);
     }
 
-    @RequestMapping("/{name}", method = RequestMethod.POST)
-    public Timezone addTimezone(@PathVariable String name, @RequestBody Timezone timezone) {
+    @RequestMapping(value = "/{name}", method = RequestMethod.POST)
+    public ResponseEntity<Timezone> addTimezone(@PathVariable String name, @RequestBody Timezone timezone) {
         if(timezone != null)
             DAOController.getTimeZoneDAO().insertTimezone(timezone);
         return new ResponseEntity<Timezone>(timezone, HttpStatus.OK);
